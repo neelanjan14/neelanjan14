@@ -262,7 +262,7 @@ class PortfolioApp {
         
         let currentSection = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop - 200;
             const sectionHeight = section.offsetHeight;
             
             if (window.pageYOffset >= sectionTop && 

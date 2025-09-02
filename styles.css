@@ -1,4 +1,4 @@
-/* Dala-inspired Portfolio Styles */
+/* Dala-inspired Portfolio - Exact Design Match */
 
 * {
     margin: 0;
@@ -57,16 +57,13 @@ body {
     pointer-events: none;
 }
 
-/* Container */
-.container {
+/* App Container */
+.app {
     position: relative;
     z-index: 1;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
 }
 
-/* Navigation */
+/* Navigation - Exact Dala Style */
 .nav {
     position: fixed;
     top: 0;
@@ -80,25 +77,33 @@ body {
     transition: all var(--transition-medium);
 }
 
-.nav-brand {
-    position: absolute;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.brand-text {
+.nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
+.brand-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.brand-link:hover {
+    color: var(--accent-color);
+}
+
 .nav-menu {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     gap: 3rem;
 }
@@ -127,11 +132,16 @@ body {
     transition: width var(--transition-fast);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
-/* Hero Section */
+.nav-link.active {
+    color: var(--text-primary);
+}
+
+/* Hero Section - Exact Dala Layout */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -141,25 +151,26 @@ body {
     padding: 8rem 0 4rem;
 }
 
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    width: 100%;
+.hero-container {
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
 }
 
-.hero-text {
-    z-index: 2;
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(4rem, 10vw, 8rem);
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.04em;
     margin-bottom: 2rem;
+    color: var(--text-primary);
 }
 
 .title-line {
@@ -176,57 +187,12 @@ body {
 .hero-description {
     font-size: 1.25rem;
     color: var(--text-secondary);
-    max-width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
     line-height: 1.6;
     opacity: 0;
     transform: translateY(30px);
     animation: slideInUp 0.8s ease 0.4s forwards;
-}
-
-.hero-visual {
-    position: relative;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.floating-elements {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.floating-element {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-color), #ff8c5a);
-    opacity: 0.8;
-    animation: float 6s ease-in-out infinite;
-}
-
-.element-1 {
-    width: 120px;
-    height: 120px;
-    top: 20%;
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.element-2 {
-    width: 80px;
-    height: 80px;
-    top: 60%;
-    right: 30%;
-    animation-delay: 2s;
-}
-
-.element-3 {
-    width: 60px;
-    height: 60px;
-    bottom: 20%;
-    left: 50%;
-    animation-delay: 4s;
 }
 
 .scroll-indicator {
@@ -256,8 +222,8 @@ body {
     text-transform: uppercase;
 }
 
-/* Work Section */
-.work-section {
+/* Work Section - Exact Dala Grid */
+.work {
     padding: 8rem 0;
     background: var(--bg-secondary);
 }
@@ -265,6 +231,7 @@ body {
 .work-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .work-header {
@@ -278,6 +245,7 @@ body {
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .section-subtitle {
@@ -361,14 +329,15 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* About Section */
-.about-section {
+/* About Section - Exact Dala Layout */
+.about {
     padding: 8rem 0;
 }
 
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .about-content {
@@ -439,8 +408,8 @@ body {
     text-align: center;
 }
 
-/* Contact Section */
-.contact-section {
+/* Contact Section - Exact Dala Style */
+.contact {
     padding: 8rem 0;
     background: var(--bg-secondary);
     text-align: center;
@@ -449,6 +418,7 @@ body {
 .contact-container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .contact-description {
@@ -527,15 +497,6 @@ body {
     }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-    }
-}
-
 @keyframes scrollPulse {
     0%, 100% {
         opacity: 0.3;
@@ -549,7 +510,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .container {
+    .nav-container {
         padding: 0 1.5rem;
     }
     
@@ -557,19 +518,15 @@ body {
         padding: 1.5rem 0;
     }
     
-    .nav-brand {
-        left: 1.5rem;
-    }
-    
     .nav-menu {
-        right: 1.5rem;
         gap: 2rem;
     }
     
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
+    .hero-container,
+    .work-container,
+    .about-container,
+    .contact-container {
+        padding: 0 1.5rem;
     }
     
     .about-content {
@@ -588,7 +545,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .container {
+    .nav-container {
         padding: 0 1rem;
     }
     
@@ -596,12 +553,7 @@ body {
         padding: 1rem 0;
     }
     
-    .nav-brand {
-        left: 1rem;
-    }
-    
     .nav-menu {
-        right: 1rem;
         gap: 1.5rem;
     }
     
@@ -613,6 +565,13 @@ body {
         padding: 6rem 0 3rem;
     }
     
+    .hero-container,
+    .work-container,
+    .about-container,
+    .contact-container {
+        padding: 0 1rem;
+    }
+    
     .hero-title {
         font-size: clamp(2.5rem, 6vw, 4rem);
     }
@@ -621,9 +580,9 @@ body {
         font-size: 1.1rem;
     }
     
-    .work-section,
-    .about-section,
-    .contact-section {
+    .work,
+    .about,
+    .contact {
         padding: 6rem 0;
     }
     
@@ -731,97 +690,6 @@ html {
 *:focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
-}
-
-/* Work particle effects */
-.work-particle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-/* Skill circle animations */
-.skill-circle[data-skill="90"] {
-    background: conic-gradient(var(--accent-color) 324deg, var(--border-color) 324deg);
-}
-
-.skill-circle[data-skill="85"] {
-    background: conic-gradient(var(--accent-color) 306deg, var(--border-color) 306deg);
-}
-
-.skill-circle[data-skill="80"] {
-    background: conic-gradient(var(--accent-color) 288deg, var(--border-color) 288deg);
-}
-
-.skill-circle[data-skill="75"] {
-    background: conic-gradient(var(--accent-color) 270deg, var(--border-color) 270deg);
-}
-
-/* Enhanced hover effects */
-.work-item {
-    position: relative;
-    overflow: hidden;
-}
-
-.work-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-    z-index: 1;
-}
-
-.work-item:hover::before {
-    left: 100%;
-}
-
-/* Loading animations */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-    }
-}
-
-@keyframes scrollPulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scaleY(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scaleY(1.2);
-    }
 }
 
 /* Reduced motion */
