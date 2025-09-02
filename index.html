@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neelanjan Datta - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <!-- WebGL Canvas for ink drag effect -->
+    <canvas id="inkCanvas"></canvas>
+    
+    <!-- Three.js Canvas for 3D elements -->
+    <canvas id="threeCanvas"></canvas>
+    
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="brand-text">Neelanjan</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Creative</span>
+                        <span class="title-line">Developer</span>
+                    </h1>
+                    <p class="hero-description">
+                        I craft immersive digital experiences that blend cutting-edge technology with creative design.
+                    </p>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="floating-element element-1"></div>
+                        <div class="floating-element element-2"></div>
+                        <div class="floating-element element-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll</span>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="work-section">
+            <div class="work-container">
+                <div class="work-header">
+                    <h2 class="section-title">Selected Work</h2>
+                    <p class="section-subtitle">A collection of projects that showcase my expertise in modern web development</p>
+                </div>
+                
+                <div class="work-grid">
+                    <div class="work-item" data-category="web">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>Neural Network Dashboard</h3>
+                                <p>Interactive AI visualization platform</p>
+                                <div class="work-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">Three.js</span>
+                                    <span class="tag">WebGL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="mobile">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>AR Experience App</h3>
+                                <p>Immersive augmented reality application</p>
+                                <div class="work-tags">
+                                    <span class="tag">ARCore</span>
+                                    <span class="tag">Unity</span>
+                                    <span class="tag">C#</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="web">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>3D Portfolio Site</h3>
+                                <p>Interactive portfolio with 3D elements</p>
+                                <div class="work-tags">
+                                    <span class="tag">Three.js</span>
+                                    <span class="tag">GLSL</span>
+                                    <span class="tag">GSAP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="ai">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>Computer Vision API</h3>
+                                <p>Real-time object detection system</p>
+                                <div class="work-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">TensorFlow</span>
+                                    <span class="tag">OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About</h2>
+                        <p class="about-description">
+                            I'm a creative developer passionate about building immersive digital experiences. 
+                            My work combines cutting-edge technology with thoughtful design to create solutions 
+                            that not only function beautifully but also tell compelling stories.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-label">Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="skills-visualization">
+                            <div class="skill-circle" data-skill="90">
+                                <span class="skill-label">Frontend</span>
+                            </div>
+                            <div class="skill-circle" data-skill="85">
+                                <span class="skill-label">Backend</span>
+                            </div>
+                            <div class="skill-circle" data-skill="80">
+                                <span class="skill-label">3D/WebGL</span>
+                            </div>
+                            <div class="skill-circle" data-skill="75">
+                                <span class="skill-label">AI/ML</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="contact-description">
+                        Have a project in mind? I'd love to hear about it. 
+                        Let's create something amazing together.
+                    </p>
+                    <div class="contact-actions">
+                        <a href="mailto:neelanjan@example.com" class="contact-btn primary">
+                            <span>Get In Touch</span>
+                            <div class="btn-arrow">→</div>
+                        </a>
+                        <a href="https://linkedin.com/in/neelanjan" class="contact-btn secondary">
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="glsl-shaders.js"></script>
+    <script src="webgl-ink.js"></script>
+    <script src="three-scene.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
