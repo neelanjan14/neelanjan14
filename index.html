@@ -3,176 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neelanjan Datta - Enhanced Portfolio</title>
+    <title>Neelanjan Datta - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
     <!-- WebGL Canvas for ink drag effect -->
     <canvas id="inkCanvas"></canvas>
     
+    <!-- Three.js Canvas for 3D elements -->
+    <canvas id="threeCanvas"></canvas>
+    
     <!-- Main content container -->
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <nav class="nav">
-                <div class="logo">
-                    <h1>Neelanjan Datta</h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="brand-text">Neelanjan</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
 
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h2 class="hero-title">Creative Developer & Designer</h2>
-                <p class="hero-subtitle">Building immersive digital experiences with cutting-edge technology</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">View My Work</button>
-                    <button class="btn btn-secondary">Get In Touch</button>
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Creative</span>
+                        <span class="title-line">Developer</span>
+                    </h1>
+                    <p class="hero-description">
+                        I craft immersive digital experiences that blend cutting-edge technology with creative design.
+                    </p>
                 </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="floating-element element-1"></div>
+                        <div class="floating-element element-2"></div>
+                        <div class="floating-element element-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll</span>
             </div>
         </section>
 
-        <!-- Interactive Brain Section -->
-        <section class="brain-section">
-            <div class="brain-container">
-                <h3 class="section-title">Neural Networks & AI</h3>
-                <div class="brain-wrapper">
-                    <svg id="brainSvg" viewBox="0 0 800 600" class="brain-svg">
-                        <!-- Brain outline -->
-                        <path id="brain-outline" d="M400,50 C300,50 200,100 150,200 C100,300 120,400 200,450 C250,480 300,500 350,480 C400,460 450,480 500,450 C580,400 600,300 550,200 C500,100 400,50 400,50 Z" 
-                              fill="rgba(100, 200, 255, 0.1)" 
-                              stroke="rgba(100, 200, 255, 0.3)" 
-                              stroke-width="2"/>
-                        
-                        <!-- Brain regions -->
-                        <g id="frontal-lobe" class="brain-region" data-region="frontal">
-                            <path d="M400,50 C350,50 300,80 280,120 C260,160 270,200 300,220 C330,200 350,180 380,160 C400,140 420,100 400,50 Z" 
-                                  fill="rgba(255, 100, 150, 0.2)" 
-                                  stroke="rgba(255, 100, 150, 0.4)" 
-                                  stroke-width="1"/>
-                            <text x="350" y="120" class="region-label">Frontal Lobe</text>
-                        </g>
-                        
-                        <g id="parietal-lobe" class="brain-region" data-region="parietal">
-                            <path d="M300,220 C280,240 260,280 280,320 C300,360 330,380 360,360 C380,340 400,320 420,300 C440,280 420,240 400,220 C360,200 320,200 300,220 Z" 
-                                  fill="rgba(100, 255, 150, 0.2)" 
-                                  stroke="rgba(100, 255, 150, 0.4)" 
-                                  stroke-width="1"/>
-                            <text x="320" y="300" class="region-label">Parietal Lobe</text>
-                        </g>
-                        
-                        <g id="temporal-lobe" class="brain-region" data-region="temporal">
-                            <path d="M200,300 C180,320 160,360 180,400 C200,440 230,460 260,440 C280,420 300,400 320,380 C340,360 320,320 300,300 C260,280 220,280 200,300 Z" 
-                                  fill="rgba(255, 200, 100, 0.2)" 
-                                  stroke="rgba(255, 200, 100, 0.4)" 
-                                  stroke-width="1"/>
-                            <text x="220" y="380" class="region-label">Temporal Lobe</text>
-                        </g>
-                        
-                        <g id="occipital-lobe" class="brain-region" data-region="occipital">
-                            <path d="M500,300 C480,320 460,360 480,400 C500,440 530,460 560,440 C580,420 600,400 620,380 C640,360 620,320 600,300 C560,280 520,280 500,300 Z" 
-                                  fill="rgba(200, 100, 255, 0.2)" 
-                                  stroke="rgba(200, 100, 255, 0.4)" 
-                                  stroke-width="1"/>
-                            <text x="520" y="380" class="region-label">Occipital Lobe</text>
-                        </g>
-                        
-                        <!-- Neural connections -->
-                        <g id="neural-connections">
-                            <line x1="350" y1="150" x2="320" y2="280" class="neural-connection"/>
-                            <line x1="320" y1="280" x2="280" y2="360" class="neural-connection"/>
-                            <line x1="320" y1="280" x2="520" y2="360" class="neural-connection"/>
-                            <line x1="450" y1="150" x2="480" y2="280" class="neural-connection"/>
-                            <line x1="480" y1="280" x2="520" y2="360" class="neural-connection"/>
-                        </g>
-                    </svg>
+        <!-- Work Section -->
+        <section id="work" class="work-section">
+            <div class="work-container">
+                <div class="work-header">
+                    <h2 class="section-title">Selected Work</h2>
+                    <p class="section-subtitle">A collection of projects that showcase my expertise in modern web development</p>
                 </div>
-                <div class="brain-info">
-                    <p>Hover over different brain regions to explore neural pathways and AI concepts</p>
+                
+                <div class="work-grid">
+                    <div class="work-item" data-category="web">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>Neural Network Dashboard</h3>
+                                <p>Interactive AI visualization platform</p>
+                                <div class="work-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">Three.js</span>
+                                    <span class="tag">WebGL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="mobile">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>AR Experience App</h3>
+                                <p>Immersive augmented reality application</p>
+                                <div class="work-tags">
+                                    <span class="tag">ARCore</span>
+                                    <span class="tag">Unity</span>
+                                    <span class="tag">C#</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="web">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>3D Portfolio Site</h3>
+                                <p>Interactive portfolio with 3D elements</p>
+                                <div class="work-tags">
+                                    <span class="tag">Three.js</span>
+                                    <span class="tag">GLSL</span>
+                                    <span class="tag">GSAP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-category="ai">
+                        <div class="work-image">
+                            <div class="work-overlay">
+                                <h3>Computer Vision API</h3>
+                                <p>Real-time object detection system</p>
+                                <div class="work-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">TensorFlow</span>
+                                    <span class="tag">OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about">
-            <div class="about-content">
-                <h3 class="section-title">About Me</h3>
-                <p class="about-text">
-                    I'm a passionate developer and designer with expertise in creating immersive digital experiences. 
-                    My work combines cutting-edge technology with creative design to build solutions that make a difference.
-                </p>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h4>Frontend Development</h4>
-                        <p>React, Vue.js, TypeScript, WebGL</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Backend Development</h4>
-                        <p>Node.js, Python, GraphQL, Databases</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Design & Animation</h4>
-                        <p>Figma, After Effects, GLSL, Three.js</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>AI & Machine Learning</h4>
-                        <p>TensorFlow, PyTorch, Computer Vision</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <h3 class="section-title">Featured Projects</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">AI Dashboard</div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Neural Network Dashboard</h4>
-                        <p>Interactive visualization of machine learning models with real-time data processing.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">WebGL</span>
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About</h2>
+                        <p class="about-description">
+                            I'm a creative developer passionate about building immersive digital experiences. 
+                            My work combines cutting-edge technology with thoughtful design to create solutions 
+                            that not only function beautifully but also tell compelling stories.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-label">Clients</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">3D Portfolio</div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Immersive 3D Portfolio</h4>
-                        <p>Three.js powered portfolio with interactive 3D elements and smooth animations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">GLSL</span>
-                            <span class="tech-tag">Blender</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">AR App</div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Augmented Reality Experience</h4>
-                        <p>Mobile AR application with computer vision and real-time object detection.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">ARCore</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">Unity</span>
+                    <div class="about-visual">
+                        <div class="skills-visualization">
+                            <div class="skill-circle" data-skill="90">
+                                <span class="skill-label">Frontend</span>
+                            </div>
+                            <div class="skill-circle" data-skill="85">
+                                <span class="skill-label">Backend</span>
+                            </div>
+                            <div class="skill-circle" data-skill="80">
+                                <span class="skill-label">3D/WebGL</span>
+                            </div>
+                            <div class="skill-circle" data-skill="75">
+                                <span class="skill-label">AI/ML</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,23 +171,23 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h3 class="section-title">Get In Touch</h3>
-            <div class="contact-content">
-                <p>Ready to collaborate on your next project?</p>
-                <div class="contact-links">
-                    <a href="mailto:neelanjan@example.com" class="contact-link">
-                        <span class="contact-icon">✉</span>
-                        Email
-                    </a>
-                    <a href="https://linkedin.com/in/neelanjan" class="contact-link">
-                        <span class="contact-icon">💼</span>
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/neelanjan" class="contact-link">
-                        <span class="contact-icon">🐙</span>
-                        GitHub
-                    </a>
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="contact-description">
+                        Have a project in mind? I'd love to hear about it. 
+                        Let's create something amazing together.
+                    </p>
+                    <div class="contact-actions">
+                        <a href="mailto:neelanjan@example.com" class="contact-btn primary">
+                            <span>Get In Touch</span>
+                            <div class="btn-arrow">→</div>
+                        </a>
+                        <a href="https://linkedin.com/in/neelanjan" class="contact-btn secondary">
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -204,7 +195,7 @@
 
     <script src="glsl-shaders.js"></script>
     <script src="webgl-ink.js"></script>
-    <script src="brain-interaction.js"></script>
+    <script src="three-scene.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

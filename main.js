@@ -3,7 +3,7 @@
 class PortfolioApp {
     constructor() {
         this.inkEffect = null;
-        this.brainInteraction = null;
+        this.threeScene = null;
         this.isInitialized = false;
         
         this.init();
@@ -21,11 +21,12 @@ class PortfolioApp {
     initializeApp() {
         try {
             this.setupInkEffect();
-            this.setupBrainInteraction();
+            this.setupThreeScene();
             this.setupSmoothScrolling();
             this.setupParallaxEffects();
             this.setupIntersectionObserver();
             this.setupPerformanceOptimizations();
+            this.setupWorkInteractions();
             
             this.isInitialized = true;
             console.log('Portfolio app initialized successfully');
@@ -46,9 +47,83 @@ class PortfolioApp {
         }
     }
     
-    setupBrainInteraction() {
-        if (window.BrainInteraction) {
-            this.brainInteraction = new BrainInteraction();
+    setupThreeScene() {
+        if (window.THREE && window.ThreeScene) {
+            this.threeScene = new ThreeScene();
+        }
+    }
+    
+    setupWorkInteractions() {
+        const workItems = document.querySelectorAll('.work-item');
+        
+        workItems.forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                this.onWorkItemHover(e, item);
+            });
+            
+            item.addEventListener('mouseleave', (e) => {
+                this.onWorkItemLeave(e, item);
+            });
+        });
+    }
+    
+    onWorkItemHover(event, item) {
+        // Add hover effects
+        item.style.transform = 'translateY(-8px) scale(1.02)';
+        
+        // Create particle effect
+        this.createWorkParticles(event, item);
+    }
+    
+    onWorkItemLeave(event, item) {
+        // Reset hover effects
+        item.style.transform = 'translateY(0) scale(1)';
+    }
+    
+    createWorkParticles(event, item) {
+        const rect = item.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Create floating particles around the work item
+        for (let i = 0; i < 5; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'work-particle';
+            particle.style.position = 'fixed';
+            particle.style.left = centerX + 'px';
+            particle.style.top = centerY + 'px';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = '#ff6b35';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1000';
+            
+            document.body.appendChild(particle);
+            
+            // Animate particle
+            const angle = (Math.PI * 2 * i) / 5;
+            const distance = 50 + Math.random() * 30;
+            const endX = centerX + Math.cos(angle) * distance;
+            const endY = centerY + Math.sin(angle) * distance;
+            
+            particle.animate([
+                { 
+                    transform: 'translate(0, 0) scale(1)', 
+                    opacity: 1 
+                },
+                { 
+                    transform: `translate(${endX - centerX}px, ${endY - centerY}px) scale(0)`, 
+                    opacity: 0 
+                }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            }).onfinish = () => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            };
         }
     }
     
@@ -175,11 +250,15 @@ class PortfolioApp {
         if (this.inkEffect) {
             this.inkEffect.resizeCanvas();
         }
+        
+        if (this.threeScene) {
+            this.threeScene.handleResize();
+        }
     }
     
     updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const navLinks = document.querySelectorAll('.nav-link');
         
         let currentSection = '';
         sections.forEach(section => {
